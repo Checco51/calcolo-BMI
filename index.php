@@ -121,10 +121,16 @@ $nome    = htmlspecialchars($_POST['nome'] ?? '');
 $peso    = (float) ($_POST['peso'] ?? 0);
 $altezza = (float) ($_POST['altezza'] ?? 0);
 
+if(isset($_POST['nome'])||(isset($_POST['peso']))||($_POST['altezza'])){
+    $nome = htmlspecialchars($_POST['nome'] ?? 'nome');
+    $peso = (float) ($_POST['peso'] ?? 'peso');
+    $altezza = (float) ($_POST['altezza'] ?? 'altezza');
+}
+
+
 $bmi = $altezza > 0 ? $peso / pow($altezza / 100, 2) : 0;
 
 
-if
 
 if ($bmi < 18.5)    { $classe = 'sottopeso';  $fascia = 'Sottopeso'; }
 elseif ($bmi < 25)  { $classe = 'normopeso';  $fascia = 'Normopeso'; }
